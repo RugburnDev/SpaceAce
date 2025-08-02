@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyWaves" load_steps=7 format=3 uid="uid://v0bijpsjxkxh"]
+
+[ext_resource type="Script" uid="uid://ccb2mfyscowwp" path="res://Classes/EnemyWaves.gd" id="1_f675a"]
+[ext_resource type="Script" uid="uid://dd4bg12f1h2gy" path="res://Classes/EnemyWave.gd" id="2_nfyhi"]
+[ext_resource type="Resource" uid="uid://cnavh7kq0urta" path="res://Resources/Waves/zipper_150_0.6_8.tres" id="3_nfyhi"]
+[ext_resource type="Resource" uid="uid://bn0ucto2etl4i" path="res://Resources/Waves/bomber_80_1.5_6.tres" id="4_3y4xg"]
+[ext_resource type="Resource" uid="uid://dix4c3rb14icw" path="res://Resources/Waves/bio_110_1_10.tres" id="5_h68fo"]
+[ext_resource type="Resource" uid="uid://c3730nvd4iuo" path="res://Resources/Waves/saucer_140_5.0_5.tres" id="6_h68fo"]
+
+[resource]
+script = ExtResource("1_f675a")
+waves = Array[ExtResource("2_nfyhi")]([ExtResource("3_nfyhi"), ExtResource("4_3y4xg"), ExtResource("5_h68fo"), ExtResource("6_h68fo"), ExtResource("3_nfyhi"), ExtResource("3_nfyhi"), ExtResource("5_h68fo"), ExtResource("3_nfyhi"), ExtResource("4_3y4xg"), ExtResource("5_h68fo"), ExtResource("6_h68fo")])
+metadata/_custom_type_script = "uid://ccb2mfyscowwp"

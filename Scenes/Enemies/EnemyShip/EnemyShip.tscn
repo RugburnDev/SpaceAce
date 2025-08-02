@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkk5u6oqoosx4"]
+
+[ext_resource type="PackedScene" uid="uid://cxqcy11rdvcyt" path="res://Scenes/Enemies/EnemyBase/EnemyBase.tscn" id="1_ucsq5"]
+[ext_resource type="Script" uid="uid://dehot8ub2kxvh" path="res://Scenes/Enemies/EnemyShip/EnemyShip.gd" id="2_2fhqp"]
+
+[node name="EnemyShip" instance=ExtResource("1_ucsq5")]
+script = ExtResource("2_2fhqp")
+_shoots_at_player = false
+_aims_at_player = false
+_bullet_type = 1
+_bullet_speed = 120.0
+_bullet_direction = Vector2(0, 1)
+_bullet_wait_time = 3.0
+_bullet_wait_time_var = 0.5
+_power_up_chance = 0.5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="5"]
+
+[node name="LaserTimer" type="Timer" parent="." index="6"]
+one_shot = true
+
+[node name="GunMounts" type="Node2D" parent="." index="7"]
+
+[connection signal="timeout" from="LaserTimer" to="." method="_on_laser_timer_timeout"]

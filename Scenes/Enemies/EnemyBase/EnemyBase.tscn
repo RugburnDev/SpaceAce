@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxqcy11rdvcyt"]
+
+[ext_resource type="Script" uid="uid://bmwydii1hvs2k" path="res://Scenes/Enemies/EnemyBase/EnemyBase.gd" id="1_0sb85"]
+[ext_resource type="PackedScene" uid="uid://qq0gjyel2fm6" path="res://Scenes/OutOfTime/OutOfTime.tscn" id="2_ebcca"]
+[ext_resource type="Script" uid="uid://c44amot4fkctp" path="res://Scenes/Enemies/EnemyBase/EnemyHitBox.gd" id="3_byu4e"]
+[ext_resource type="PackedScene" uid="uid://bqww1eq6vsch2" path="res://Scenes/HealthBar/HealthBar.tscn" id="3_lajj5"]
+
+[node name="EnemyBase" type="PathFollow2D"]
+rotates = false
+loop = false
+script = ExtResource("1_0sb85")
+
+[node name="OutOfTime" parent="." instance=ExtResource("2_ebcca")]
+life_s = 30.0
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Booms" type="Node2D" parent="."]
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("3_byu4e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+
+[node name="HealthBar" parent="." instance=ExtResource("3_lajj5")]
+offset_left = -25.0
+offset_top = -20.0
+offset_right = 25.0
+offset_bottom = -17.0
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="died" from="HealthBar" to="." method="_on_health_bar_died"]

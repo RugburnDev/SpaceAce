@@ -1,0 +1,145 @@
+[gd_scene load_steps=20 format=3 uid="uid://7mhp2vujfwd"]
+
+[ext_resource type="PackedScene" uid="uid://bkk5u6oqoosx4" path="res://Scenes/Enemies/EnemyShip/EnemyShip.tscn" id="1_kw7uy"]
+[ext_resource type="Script" uid="uid://cstubepal8p8v" path="res://Scenes/Enemies/EnemyZipper/EnemyZipper.gd" id="2_ol6sw"]
+[ext_resource type="Texture2D" uid="uid://boqfds8f87l23" path="res://assets/ships/zipper_2.png" id="3_1myoj"]
+[ext_resource type="Texture2D" uid="uid://bf36255ubc5ns" path="res://assets/ships/zipper_3.png" id="4_alsqb"]
+[ext_resource type="Texture2D" uid="uid://eq7fjur406y" path="res://assets/ships/zipper_1.png" id="5_2rweq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1myoj"]
+radius = 14.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ff5x1"]
+atlas = ExtResource("3_1myoj")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yr6uw"]
+atlas = ExtResource("3_1myoj")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18c06"]
+atlas = ExtResource("3_1myoj")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lulus"]
+atlas = ExtResource("3_1myoj")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxlkl"]
+atlas = ExtResource("4_alsqb")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ke7r3"]
+atlas = ExtResource("4_alsqb")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glisp"]
+atlas = ExtResource("4_alsqb")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14sob"]
+atlas = ExtResource("4_alsqb")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtbec"]
+atlas = ExtResource("5_2rweq")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhqn1"]
+atlas = ExtResource("5_2rweq")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_802tp"]
+atlas = ExtResource("5_2rweq")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hre5y"]
+atlas = ExtResource("5_2rweq")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rvyly"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ff5x1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yr6uw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18c06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lulus")
+}],
+"loop": true,
+"name": &"purple",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxlkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ke7r3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glisp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14sob")
+}],
+"loop": true,
+"name": &"red",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtbec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhqn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_802tp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hre5y")
+}],
+"loop": true,
+"name": &"yellow",
+"speed": 10.0
+}]
+
+[node name="EnemyZipper" instance=ExtResource("1_kw7uy")]
+script = ExtResource("2_ol6sw")
+_shoots_at_player = true
+_power_up_chance = 0.25
+_crash_damage = 2
+_points = 2
+
+[node name="Marker2D" type="Marker2D" parent="Booms" index="0"]
+position = Vector2(6, 0)
+
+[node name="Marker2D_2" type="Marker2D" parent="Booms" index="1"]
+position = Vector2(-6, 0)
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CircleShape2D_1myoj")
+
+[node name="HealthBar" parent="." index="4"]
+offset_top = -25.0
+offset_bottom = -22.0
+level_low = 5
+level_med = 15
+start_health = 25
+max_health = 25
+
+[node name="AnimatedSprite2D" parent="." index="5"]
+sprite_frames = SubResource("SpriteFrames_rvyly")
+animation = &"yellow"
+autoplay = "yellow"
+frame_progress = 0.102693
+
+[node name="Marker2D" type="Marker2D" parent="GunMounts" index="0"]
+position = Vector2(0, 5)

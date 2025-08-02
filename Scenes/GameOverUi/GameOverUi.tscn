@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://wq72u8wsecna"]
+
+[ext_resource type="Script" uid="uid://dih56x5mhrj1q" path="res://Scenes/GameOverUi/GameOverUi.gd" id="1_j2od3"]
+[ext_resource type="LabelSettings" uid="uid://drkn6vpscovlg" path="res://Resources/Text/white_title_96.tres" id="2_8nicn"]
+[ext_resource type="LabelSettings" uid="uid://03e7cmtyaq1" path="res://Resources/Text/white_title_32.tres" id="3_mdbud"]
+[ext_resource type="LabelSettings" uid="uid://lhre26rkmvap" path="res://Resources/Text/white_title_20.tres" id="4_byt08"]
+
+[node name="GameOverUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j2od3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25098, 0.0588235, 0.505882, 0.694118)
+
+[node name="VBContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -25.0
+offset_right = 20.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="VBContainer"]
+layout_mode = 2
+text = "GAME OVER"
+label_settings = ExtResource("2_8nicn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="VBContainer"]
+layout_mode = 2
+text = "Score: 000"
+label_settings = ExtResource("3_mdbud")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuLabel" type="Label" parent="VBContainer"]
+visible = false
+layout_mode = 2
+text = "Press Shoot to return to Main Menu"
+label_settings = ExtResource("4_byt08")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WaitTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]

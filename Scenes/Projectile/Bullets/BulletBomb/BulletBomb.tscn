@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://b830gg71eo121"]
+
+[ext_resource type="PackedScene" uid="uid://c8841lovyo0jn" path="res://Scenes/Projectile/Bullets/BulletBase/BulletBase.tscn" id="1_r0f0o"]
+[ext_resource type="Script" uid="uid://cafbnbv6ogymj" path="res://Scenes/Projectile/Bullets/BulletBomb/BulletBomb.gd" id="2_fwstb"]
+[ext_resource type="Texture2D" uid="uid://cdbm8frqf8tqn" path="res://assets/lasers/circle_bomb_red-Sheet.png" id="3_k5w4p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vr3a5"]
+atlas = ExtResource("3_k5w4p")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtbcx"]
+atlas = ExtResource("3_k5w4p")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjk6v"]
+atlas = ExtResource("3_k5w4p")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqdrm"]
+atlas = ExtResource("3_k5w4p")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1hg88"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vr3a5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtbcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjk6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqdrm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k5w4p"]
+radius = 7.0
+
+[node name="BulletBomb" instance=ExtResource("1_r0f0o")]
+collision_layer = 4
+collision_mask = 33
+script = ExtResource("2_fwstb")
+
+[node name="Sprite2D" parent="." index="0"]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_1hg88")
+autoplay = "default"
+frame_progress = 0.312109
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_k5w4p")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="4"]
+position = Vector2(1.78814e-07, -2.38419e-07)
+scale = Vector2(0.5, 0.4)

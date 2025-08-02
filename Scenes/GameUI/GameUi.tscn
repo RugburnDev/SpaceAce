@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdwntrdwtpv8i"]
+
+[ext_resource type="Script" uid="uid://bq8s5b8njm2fi" path="res://Scenes/GameUI/GameUi.gd" id="1_81r78"]
+[ext_resource type="PackedScene" uid="uid://bqww1eq6vsch2" path="res://Scenes/HealthBar/HealthBar.tscn" id="1_diq3n"]
+
+[node name="GameUI" type="Control"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_81r78")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 33.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 10
+
+[node name="HealthBar" parent="MarginContainer" instance=ExtResource("1_diq3n")]
+custom_minimum_size = Vector2(128, 18)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "000000"
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
+
+[connection signal="died" from="MarginContainer/HealthBar" to="." method="_on_health_bar_died"]
